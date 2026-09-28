@@ -101,7 +101,30 @@
     <button>♥️ 0</button>
     <button>⭐ 0</button>
     <button>👁️ 0</button>
-    <button>🌀 0</button>
+    <button>🌀 0<script>
+  // Get the spiral button
+  const spiralBtn = document.querySelector(".stats-buttons button:nth-child(4)");
+
+  // Disable direct clicking
+  spiralBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+  });
+
+  // Get the Remix button
+  const remixBtn = document.querySelector("button[style*='background: blue']");
+
+  // When Remix is clicked, increase the spiral count
+  remixBtn.addEventListener("click", () => {
+    let parts = spiralBtn.textContent.split(" ");
+    let emoji = parts[0];
+    let count = parseInt(parts[1]);
+
+    count++;
+
+    spiralBtn.textContent = `${emoji} ${count}`;
+  });
+</script></button>
 <script>
   // STAT BUTTON COUNTERS
   const statButtons = document.querySelectorAll(".stats-buttons button");
