@@ -15,3 +15,5 @@ catchphrases:
   - "Rabbit battalion reporting in."
 comments:
   format: "naval-brief"
+errors:
+  tone: "shouting-alert"
