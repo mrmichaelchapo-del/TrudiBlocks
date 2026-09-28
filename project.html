@@ -29,27 +29,10 @@
       font-family: monospace;
     }
 
-    /* FIXED BUTTON STYLES */
     .stats-buttons button {
       margin-right: 8px;
       padding: 6px 12px;
       font-size: 16px;
-    }
-
-    .remix-btn {
-      background: blue;
-      color: white;
-      padding: 8px 14px;
-      border-radius: 6px;
-      border: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      cursor: pointer;
-    }
-    .remix-btn img {
-      width: 20px;
-      height: 20px;
     }
   </style>
 </head>
@@ -101,52 +84,10 @@
     <button>♥️ 0</button>
     <button>⭐ 0</button>
     <button>👁️ 0</button>
-    <button>🌀 0<script>
-  // Get the spiral button
-  const spiralBtn = document.querySelector(".stats-buttons button:nth-child(4)");
-
-  // Disable direct clicking
-  spiralBtn.addEventListener("click", (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-  });
-
-  // Get the Remix button
-  const remixBtn = document.querySelector("button[style*='background: blue']");
-
-  // When Remix is clicked, increase the spiral count
-  remixBtn.addEventListener("click", () => {
-    let parts = spiralBtn.textContent.split(" ");
-    let emoji = parts[0];
-    let count = parseInt(parts[1]);
-
-    count++;
-
-    spiralBtn.textContent = `${emoji} ${count}`;
-  });
-</script></button>
-<script>
-  // STAT BUTTON COUNTERS
-  const statButtons = document.querySelectorAll(".stats-buttons button");
-
-  statButtons.forEach(btn => {
-    btn.addEventListener("click", () => {
-      // Extract the number from the button text
-      let parts = btn.textContent.split(" ");
-      let emoji = parts[0];
-      let count = parseInt(parts[1]);
-
-      // Increase count
-      count++;
-
-      // Update button text
-      btn.textContent = `${emoji} ${count}`;
-    });
-  });
-</script>
+    <button id="spiralBtn">🌀 0</button>
   </div>
 
-  <button style="background: blue;
+  <button id="remixBtn" style="background: blue;
       color: white;
       padding: 8px 14px;
       border-radius: 6px;
@@ -158,6 +99,37 @@
     <img src="remix.png" alt="Remix icon">
     Remix
   </button>
+
+<script>
+  // NORMAL STAT BUTTONS (except spiral)
+  const statButtons = document.querySelectorAll(".stats-buttons button");
+  const spiralBtn = document.getElementById("spiralBtn");
+
+  statButtons.forEach(btn => {
+    if (btn !== spiralBtn) {
+      btn.addEventListener("click", () => {
+        let [emoji, count] = btn.textContent.split(" ");
+        count = parseInt(count) + 1;
+        btn.textContent = `${emoji} ${count}`;
+      });
+    }
+  });
+
+  // DISABLE DIRECT CLICKING ON SPIRAL
+  spiralBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+  });
+
+  // REMIX BUTTON INCREASES SPIRAL
+  const remixBtn = document.getElementById("remixBtn");
+
+  remixBtn.addEventListener("click", () => {
+    let [emoji, count] = spiralBtn.textContent.split(" ");
+    count = parseInt(count) + 1;
+    spiralBtn.textContent = `${emoji} ${count}`;
+  });
+</script>
 
 </body>
 </html>
