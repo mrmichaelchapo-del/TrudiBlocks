@@ -102,6 +102,25 @@
     <button>⭐ 0</button>
     <button>👁️ 0</button>
     <button>🌀 0</button>
+<script>
+  // STAT BUTTON COUNTERS
+  const statButtons = document.querySelectorAll(".stats-buttons button");
+
+  statButtons.forEach(btn => {
+    btn.addEventListener("click", () => {
+      // Extract the number from the button text
+      let parts = btn.textContent.split(" ");
+      let emoji = parts[0];
+      let count = parseInt(parts[1]);
+
+      // Increase count
+      count++;
+
+      // Update button text
+      btn.textContent = `${emoji} ${count}`;
+    });
+  });
+</script>
   </div>
 
   <button style="background: blue;
