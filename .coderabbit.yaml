@@ -13,3 +13,5 @@ catchphrases:
   - "Standing by, captain."
   - "Understood, commander."
   - "Rabbit battalion reporting in."
+comments:
+  format: "naval-brief"
