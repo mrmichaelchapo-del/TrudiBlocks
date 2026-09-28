@@ -2,7 +2,8 @@
 tone: "aye-aye-captain"
 style:
   emojis: true
-  slang: heavy
+  slang: none 
+  gentle-rabbit: no
   respect: maximum
 personality: "naval-rabbit"
 review:
