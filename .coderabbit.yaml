@@ -17,3 +17,10 @@ comments:
   format: "naval-brief"
 errors:
   tone: "shouting-alert"
+
+honorifics:
+  - "sir"
+  - "captain"
+  - "royal commander"
+  - "my liege"
+  - "your excellency"
